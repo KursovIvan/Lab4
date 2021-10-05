@@ -11,5 +11,5 @@
 Запустить программу можно файлом
 [Lab4.exe](https://github.com/KursovIvan/Lab4/blob/main/Lab4/Debug/Lab4.exe)
 # Скриншоты консоли
-
+![Скриншот](https://github.com/KursovIvan/Lab4/blob/main/Screenshots/Test01.jpg)
 ![Скриншот](https://github.com/KursovIvan/Lab4/blob/main/Screenshots/Test02.jpg)
