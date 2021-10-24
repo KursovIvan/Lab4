@@ -7,11 +7,11 @@ using std::endl;
 using std::swap;
 
 // функция проверки ввода
-bool enter_check(int num, int limit)
+bool enter_check(int &num, int limit)
 {
     if (cin.fail() || cin.peek() != '\n' || num > limit || num < 1)
     {
-        cout << "Некорректный ввод." << endl;
+        cout << "Некорректный ввод. Введенное число должно быть целым, большим нуля и меньшим " << limit << endl;
         cin.clear();
         cin.ignore(cin.rdbuf()->in_avail());
         return false;
@@ -53,7 +53,7 @@ int main()
     Worker* employees = new Worker[number_of_workers];
 
     // заполняется поле distance - расстояние до дома, для каждого сотрудника
-    for (size_t i = 0; i <number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         while (true)
         {
@@ -69,10 +69,10 @@ int main()
     }
 
     // сортировка по возрастанию расстояния
-    for (size_t i = 0; i < number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         bool flag = true;
-        for (size_t j = 0; j < number_of_workers - (i + 1); j++)
+        for (int j = 0; j < number_of_workers - (i + 1); j++)
         {
             if (employees[j].distance > employees[j+1].distance)
             {
@@ -89,7 +89,7 @@ int main()
     Taxi* tri_desyatki = new Taxi[number_of_workers];
 
     // заполняется поле tariff для каждого такси
-    for (size_t i = 0; i < number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         while (true)
         {
@@ -105,10 +105,10 @@ int main()
     }
 
     // сортировка по убыванию стоимости тарифа
-    for (size_t i = 0; i < number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         bool flag = true;
-        for (size_t j = 0; j < number_of_workers - (i + 1); j++)
+        for (int j = 0; j < number_of_workers - (i + 1); j++)
         {
             if (tri_desyatki[j].tariff < tri_desyatki[j+1].tariff)
             {
@@ -123,7 +123,7 @@ int main()
     }
 
     // сотруднику с наименьшим расстоянием назначается такси с наибольшим тарифом
-    for (size_t i = 0; i < number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         employees[i].id_of_taxi = tri_desyatki[i].id;
     }
@@ -133,12 +133,12 @@ int main()
     int* output = new int[number_of_workers];
 
     // выставляем номера подходящих такси по порядку 
-    for (size_t i = 0; i < number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         output[employees[i].id] = employees[i].id_of_taxi;
     }
 
-    for (size_t i = 0; i < number_of_workers; i++)
+    for (int i = 0; i < number_of_workers; i++)
     {
         cout << output[i] << " ";
     }
